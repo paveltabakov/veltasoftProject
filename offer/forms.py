@@ -1,7 +1,7 @@
 from django import forms
 from .models import Offer
 
-class PostOffer(forms.ModelForm):
+class PostOfferForm(forms.ModelForm):
     
     class Meta:
         model = Offer
