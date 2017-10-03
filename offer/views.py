@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Offer  # The dot(.) before models means current directory or current application
 # Both views.py and models.py are in the same directory
 from .forms import PostOfferForm
-from django.core.validators import validate_email
 from django.contrib import messages
 # Create your views here.
 # A view is a place where we put the "logic" of our application
@@ -21,9 +20,13 @@ def send(request):
             offerForm.save()
             successText = "Your request is send! Thank you!"
             messages.success(request, successText)
-            return render(request, 'offer/show_offer_form.html', {'form' : offerForm})
+            return render(request, 'offer/show_offer_form.html')
+        else:
+            errorText = "Form is not valid!!!"
+            messages.error(request, errorText)
+            return render(request, 'offer/show_offer_form.html') 
     else:
-        form = PostOfferForm()
-    return render(request, 'offer/show_offer_form.html', {'form' : form})
+        offerForm = PostOfferForm()
+    return render(request, 'offer/show_offer_form.html', {'offerForm':offerForm})
             
     

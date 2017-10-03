@@ -10,5 +10,5 @@ class Offer(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     
     
-    def __str__(self):
-        return self.email
+    def __str__(self): #private method  toString()
+        return (self.email, self.customerName, self.message, self.subject)

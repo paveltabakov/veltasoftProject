@@ -10,13 +10,13 @@
 		{% csrf_token %} <!-- This is very important, since it makes your forms secure! -->
 		<div align="center">
 			<p>Name</p>
-			<input type="text" id="cust_name" name="customerName" />
+			<input type="text" id="cust_name" name="customerName" required/>
 			<p>Email</p>
-			<input type="text" id="cust_email" name="email" />
+			<input type="text" id="cust_email" name="email" required/>
 			<p>Subject</p>
-			<input type="text" id="subject" name="subject" />
+			<input type="text" id="subject" name="subject" required/>
 			<p>Message</p>
-			<textarea rows="4" cols="50" id="msgs" name="message"></textarea>
+			<textarea rows="4" cols="50" id="msgs" name="message" required></textarea>
 			<button type="submit">Save</button>
 		</div>
 	</form>
