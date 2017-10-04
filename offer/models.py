@@ -11,4 +11,4 @@ class Offer(models.Model):
     
     
     def __str__(self): #private method  toString()
-        return (self.email, self.customerName, self.message, self.subject)
+        return self.email

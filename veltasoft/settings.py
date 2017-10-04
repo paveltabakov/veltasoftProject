@@ -28,7 +28,7 @@ DEBUG = True
 #When DEBUG is True and ALLOWED_HOSTS is empty, the host is validated against ['localhost', '127.0.0.1', '[::1]'].
 #This won't match our hostname on veltasoft.com once we deploy our application so we will change the following setting:
 
-ALLOWED_HOSTS = ['localhost', 'veltasoft.com']
+ALLOWED_HOSTS = ['localhost', 'veltasoft.com', 'veltasoft.com/lp']
 
 
 
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'offer'
+    'offer',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+RECAPTCHA_PRIVATE_KEY = '6Lef9TIUAAAAAFABKQhldHm2ji3MTWOawv5zlpTr'
+RECAPTCHA_PUBLIC_KEY = '6Lef9TIUAAAAAEg8HroVDIqGU-dhJ6y3KT2WZPIN'

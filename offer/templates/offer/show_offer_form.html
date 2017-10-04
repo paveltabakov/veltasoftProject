@@ -3,27 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Veltasoft</title>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 	<h1 align="center">Veltasoft Request Form</h1>
 	<form action="save/" method="post">
-		{% csrf_token %} <!-- This is very important, since it makes your forms secure! -->
+		{% csrf_token %}
+		<!-- This is very important, since it makes your forms secure! -->
 		<div align="center">
 			<p>Name</p>
-			<input type="text" id="cust_name" name="customerName" required/>
+			<input type="text" id="cust_name" name="customerName" required />
 			<p>Email</p>
-			<input type="text" id="cust_email" name="email" required/>
+			<input type="text" id="cust_email" name="email" required />
 			<p>Subject</p>
-			<input type="text" id="subject" name="subject" required/>
+			<input type="text" id="subject" name="subject" required />
 			<p>Message</p>
 			<textarea rows="4" cols="50" id="msgs" name="message" required></textarea>
-			<button type="submit">Save</button>
+			<div class="g-recaptcha" data-sitekey="6Lef9TIUAAAAAEg8HroVDIqGU-dhJ6y3KT2WZPIN"></div>
+			<button type="submit">SEND</button>
 		</div>
 	</form>
 	{% if messages %}
 	<ul class="messages">
 		{% for message in messages %}
-		<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message }}</li> {% endfor %}
+		<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message}}</li> {% endfor %}
 	</ul>
 	{% endif %}
 </body>
