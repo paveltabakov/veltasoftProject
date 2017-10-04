@@ -1,5 +1,4 @@
-import json
-import urllib
+import requests
 
 from django.shortcuts import render
 from .models import Offer  # The dot(.) before models means current directory or current application
@@ -22,15 +21,12 @@ def send(request):
         if offerForm.is_valid():
            #''' Begin reCAPTCHA validation '''
             recaptcha_response = request.POST.get('g-recaptcha-response')
-            url = 'https://www.google.com/recaptcha/api/siteverify'
-            values = {
+            data = {
                 'secret': settings.RECAPTCHA_PRIVATE_KEY,
                 'response': recaptcha_response
             }
-            data = urllib.parse.urlencode(values).encode()
-            req =  urllib.request.Request(url, data=data)
-            response = urllib.request.urlopen(req)
-            result = json.loads(response.read().decode())
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
             #''' End reCAPTCHA validation '''
             if result['success']:
                 offerForm.save()
